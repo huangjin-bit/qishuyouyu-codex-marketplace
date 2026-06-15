@@ -1,49 +1,42 @@
-# 奇树有鱼 Codex Plugin
+# 奇树有鱼 Codex Marketplace
 
-这是奇树有鱼公司的 Codex 插件，用于沉淀团队开发规范和 PR 工作流。
+这是奇树有鱼团队的 Codex 插件市场仓库，用于统一分发公司内部 Codex 插件。
 
-## 已包含的 skill
+## 当前插件
 
-- `qishuyouyu-pr`：PR 管理规范，强制从最新 `master` 创建分支，创建草稿 PR，并邀请易从评审。
-- `qishuyouyu-dev-standards`：通用开发规范，覆盖 TDD、错误处理、日志、注释、模块拆分和前端验证偏好。
+- `qishuyouyu-plugin`：奇树有鱼开发规范和 PR 管理插件。
 
-## PR 快速使用
+## 仓库结构
 
-先配置易从的 GitHub username：
-
-```powershell
-$env:QISHUYOUYU_YICONG_GITHUB = "<yicong-github-username>"
+```text
+qishuyouyu-plugin/
+  .agents/
+    plugins/
+      marketplace.json
+  plugins/
+    qishuyouyu-plugin/
+      .codex-plugin/
+      skills/
+      scripts/
 ```
 
-创建分支并开草稿 PR：
+## 使用方式
 
-```powershell
-.\scripts\create-qishuyouyu-draft-pr.ps1 -Feature "add-order-export" -Title "Add order export"
+团队成员 clone 本仓库后，在 Codex 中通过 marketplace 文件加载：
+
+```text
+.agents/plugins/marketplace.json
 ```
 
-也可以直接传入评审人：
+插件本体路径：
 
-```powershell
-.\scripts\create-qishuyouyu-draft-pr.ps1 -Feature "fix-login-timeout" -Reviewer "<yicong-github-username>"
+```text
+plugins/qishuyouyu-plugin
 ```
 
-## PR 规则
+## 维护规则
 
-```mermaid
-flowchart LR
-  A["检查工作区干净"] --> B["fetch origin master"]
-  B --> C["checkout master"]
-  C --> D["pull --ff-only origin master"]
-  D --> E["创建 <profile-name>/<PR功能> 分支"]
-  E --> F["push 分支"]
-  F --> G["gh pr create --draft"]
-  G --> H["邀请易从 review"]
-```
-
-关键约束：
-
-- 只能从 `master` 创建功能分支。
-- 分支名格式是 `<profile-name>/<PR功能>`，`profile-name` 来自当前 GitHub Profile 显示名称，不使用 login/username。
-- PR base 必须是 `master`。
-- PR 必须是 draft。
-- 必须邀请易从评审。
+- 新增插件时放到 `plugins/<plugin-name>/`。
+- marketplace 条目统一写到 `.agents/plugins/marketplace.json`。
+- 插件内的公司规范优先写入对应 skill，不随意改业务仓库的 README 或 AGENTS.md。
+- 推送前使用插件内的 PR/push 规范脚本做检查。

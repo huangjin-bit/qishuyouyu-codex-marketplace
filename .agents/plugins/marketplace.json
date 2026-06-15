@@ -1,0 +1,20 @@
+{
+  "name": "qishuyouyu-codex-marketplace",
+  "interface": {
+    "displayName": "奇树有鱼 Codex 插件市场"
+  },
+  "plugins": [
+    {
+      "name": "qishuyouyu-plugin",
+      "source": {
+        "source": "local",
+        "path": "./plugins/qishuyouyu-plugin"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    }
+  ]
+}
