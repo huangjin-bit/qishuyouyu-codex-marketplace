@@ -1,7 +1,7 @@
 {
   "name": "qishuyouyu-plugin",
-  "version": "0.1.0",
-  "description": "Codex plugin for Qishu Youyu business context, development standards, and PR workflow.",
+  "version": "0.3.0",
+  "description": "Codex plugin for Qishu Youyu business context, development standards, PR workflow, and Kun MCP extensions.",
   "author": {
     "name": "Qishu Youyu",
     "email": "dev@example.com",
@@ -16,7 +16,8 @@
     "kun",
     "ai-devops",
     "work-item",
-    "auth-mcp",
+    "kun-mcp",
+    "qsyy-kun",
     "pr-workflow",
     "development-standards"
   ],
@@ -24,7 +25,7 @@
   "interface": {
     "displayName": "奇树有鱼开发规范",
     "shortDescription": "业务上下文、PR 管理、分支策略和团队开发约定。",
-    "longDescription": "面向奇树有鱼团队的 Codex 插件，覆盖 drama 漫剧业务、Kun 内部 AI DevOps 平台上下文、Kun Work Item 查看/创建/修改与 auth MCP token 流程、参考原项目结构的代码规范、从 master 拉取、按 GitHub Profile Name 创建功能分支、草稿 PR、指定评审人、固定化 PR 脚本和推送前禁止项检查。",
+    "longDescription": "面向奇树有鱼团队的 Codex 插件，覆盖 drama 漫剧业务、Kun 内部 AI DevOps 平台上下文、通过 Kun MCP 创建工作项的 qsyy-kun 扩展能力、参考原项目结构的代码规范、从 master 拉取、按 GitHub Profile Name 创建功能分支、草稿 PR、指定评审人、固定化 PR 脚本和推送前禁止项检查。",
     "developerName": "Qishu Youyu",
     "category": "Productivity",
     "capabilities": [
@@ -38,7 +39,7 @@
     "defaultPrompt": [
       "按奇树有鱼规范创建一个草稿 PR。",
       "解释 drama 应用和 Kun 平台的关系。",
-      "设计 Kun 工作项的 token 调用流程。"
+      "通过 Kun MCP 创建一个 drama-react 工作项。"
     ],
     "brandColor": "#0F766E"
   }

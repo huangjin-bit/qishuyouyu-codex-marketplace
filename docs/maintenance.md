@@ -7,10 +7,13 @@
 同一条公司规范需要同时维护：
 
 ```text
-Codex:
+Source:
+  shared/skills/<skill-name>/SKILL.md
+
+Generated Codex:
   plugins/qishuyouyu-plugin/skills/<skill-name>/SKILL.md
 
-GitHub Copilot:
+Generated GitHub Copilot:
   .github/skills/<skill-name>/SKILL.md
 ```
 
@@ -22,9 +25,9 @@ GitHub Copilot:
 
 ## 新增 skill 流程
 
-1. 在 Codex plugin 下新增 skill。
-2. 在 `.github/skills/` 下新增同名 Copilot skill。
-3. 如果涉及脚本，把脚本放在对应 skill 的 `scripts/` 目录。
+1. 在 `shared/skills/` 下新增 skill。
+2. 如果涉及脚本，把脚本放在 shared 对应 skill 的 `scripts/` 目录。
+3. 运行 `tools/sync-shared-skills.ps1` 生成 Codex 和 Copilot 输出。
 4. 更新 `README.md` 的能力包列表。
 5. 更新 `CHANGELOG.md`。
 6. 运行验证脚本。
@@ -32,6 +35,8 @@ GitHub Copilot:
 ## 验证
 
 ```powershell
+.\tools\sync-shared-skills.ps1
+.\tools\validate-marketplace.ps1
 .\tools\validate-copilot-support.ps1
 ```
 
@@ -47,8 +52,9 @@ git status --short
 
 - 不提交真实 token、API key、密码、私钥。
 - 不在日志示例里写真实凭据。
-- Kun Work Item 和 auth MCP 相关内容只写设计原则，不写生产 token 或私有凭据。
+- Kun MCP 相关内容只写语义能力和公开参数，不写生产 token 或私有凭据。
 - public 仓库中避免写入尚未公开的内部接口地址。
+- `qsyy-kun` 不暴露后端接口地址、鉴权 header、应用 ID、组件 ID 或内部默认字段。
 
 ## 版本规则
 
@@ -63,3 +69,10 @@ MAJOR.MINOR.PATCH
 - `MAJOR`：破坏性变更，例如删除或重命名 skill。
 - `MINOR`：新增能力包或重要规范。
 - `PATCH`：文档修正、验证脚本修正、措辞调整。
+
+发布版本时同时更新 `VERSION`、`CHANGELOG.md`，并创建 Git tag，例如：
+
+```powershell
+git tag v0.3.0
+git push origin master --tags
+```

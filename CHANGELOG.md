@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.3.0 - 2026-07-08
+
+- 增加 `shared/skills` 作为 Codex 和 GitHub Copilot skills 的统一来源。
+- 增加 `tools/sync-shared-skills.ps1`，用于生成 Codex 和 Copilot 两套 skill 输出。
+- 删除旧的 `qishuyouyu-kun-work-item`，替换为 `qsyy-kun` Kun 平台扩展能力包。
+- 增加 `qsyyKunCreateWorkItems` 能力说明，通过 Kun MCP 创建工作项，只暴露 `repository`、`title`、`content` 三个参数。
+- 更新安装、维护和校验文档，明确发布版本需要更新 `VERSION`、`CHANGELOG.md` 并创建 Git tag。
+
 ## 0.2.0 - 2026-07-08
 
 - 明确仓库定位为“奇树有鱼 AI 开发规范与能力包中心”。

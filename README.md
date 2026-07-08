@@ -14,7 +14,7 @@
 - `qishuyouyu-business-context`：公司业务上下文，覆盖 drama 应用、Kun 平台定位和组件关系。
 - `qishuyouyu-dev-standards`：通用开发规范，强调参考原项目结构、显式错误处理、日志和测试边界。
 - `qishuyouyu-pr`：PR 管理规范，覆盖 master 分支策略、profile-name 分支命名、draft PR 和评审邀请。
-- `qishuyouyu-kun-work-item`：Kun Work Item 查看、创建、修改能力，以及 personal agent token / auth MCP 调用流程。
+- `qsyy-kun`：Kun 平台扩展能力包，当前包含 `qsyyKunCreateWorkItems`，通过 Kun MCP 创建工作项。
 
 ## 仓库结构
 
@@ -28,6 +28,8 @@ qishuyouyu-codex-marketplace/
       .codex-plugin/
       skills/
       scripts/
+  shared/
+    skills/                         # Codex 和 Copilot 的统一 skill 来源
   .github/
     copilot-instructions.md         # GitHub Copilot 仓库级长期指令
     skills/                         # GitHub Copilot skills
@@ -49,9 +51,10 @@ GitHub Copilot 安装方式见 [docs/install-copilot.md](docs/install-copilot.md
 
 ## 维护规则
 
-- 新增公司规范时，同时更新 Codex skill 和对应 Copilot skill。
-- Codex skill 放到 `plugins/qishuyouyu-plugin/skills/<skill-name>/`。
-- Copilot skill 放到 `.github/skills/<skill-name>/`。
+- 新增公司规范时，优先更新 `shared/skills/<skill-name>/`。
+- 使用 `tools/sync-shared-skills.ps1` 生成 Codex skill 和对应 Copilot skill。
+- Codex 生成结果位于 `plugins/qishuyouyu-plugin/skills/<skill-name>/`。
+- Copilot 生成结果位于 `.github/skills/<skill-name>/`。
 - Codex marketplace 条目统一写到 `.agents/plugins/marketplace.json`。
 - 不把真实 token、内部密钥、私有接口凭据写入本仓库。
 - 公司规范优先写入对应 skill，不随意改业务仓库的 README 或 AGENTS.md。
@@ -60,6 +63,7 @@ GitHub Copilot 安装方式见 [docs/install-copilot.md](docs/install-copilot.md
 ## 验证
 
 ```powershell
+.\tools\sync-shared-skills.ps1
 .\tools\validate-copilot-support.ps1
 ```
 

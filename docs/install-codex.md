@@ -41,4 +41,4 @@ git pull --ff-only
 - 业务上下文：drama、Kun、组件关系。
 - 开发规范：参考原项目结构、显式错误处理、日志、测试边界。
 - PR 规范：从 master 建分支、draft PR、邀请评审。
-- Kun Work Item：personal agent token / auth MCP / Kun 工作项调用流程。
+- Kun 平台扩展能力：`qsyy-kun`，当前通过 Kun MCP 创建工作项。
