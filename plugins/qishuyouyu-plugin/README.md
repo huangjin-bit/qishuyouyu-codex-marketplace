@@ -7,7 +7,7 @@
 - `qishuyouyu-pr`：PR 管理规范，强制从最新 `master` 创建分支，创建草稿 PR，并邀请易从评审。
 - `qishuyouyu-dev-standards`：通用开发规范，覆盖 TDD、错误处理、日志、注释、模块拆分和前端验证偏好。
 - `qishuyouyu-business-context`：业务上下文，覆盖 drama 应用、Kun 平台定位和组件关系。
-- `qsyy-kun`：Kun 平台扩展能力包，当前通过 Kun MCP 创建工作项。
+- `qsyy-kun`：Kun 平台扩展能力包，当前通过 Kun MCP 创建工作项/任务项。
 
 ## PR 快速使用
 

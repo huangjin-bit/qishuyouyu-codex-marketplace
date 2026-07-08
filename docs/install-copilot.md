@@ -47,4 +47,4 @@ git pull --ff-only
 - skills 中的脚本应先预览再安装。
 - 不要把真实 token 或内部密钥写进 skill。
 - `qishuyouyu-pr` skill 包含 PowerShell 脚本，用于固定 PR 流程和推送前检查。
-- `qsyy-kun` skill 当前包含 `qsyyKunCreateWorkItems`，要求通过 Kun MCP 创建工作项。
+- `qsyy-kun` skill 当前包含 `qsyyKunCreateWorkItems` 和 `qsyyKunCreateTaskItems`，要求通过 Kun MCP 创建工作项/任务项。

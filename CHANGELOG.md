@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.3.1 - 2026-07-08
+
+- 在 `qsyy-kun` 下新增 `qsyyKunCreateTaskItems`，支持“新建任务项”的用户表达。
+- 更新校验脚本，确保 Codex 和 GitHub Copilot 输出都包含新建任务项能力。
+
 ## 0.3.0 - 2026-07-08
 
 - 增加 `shared/skills` 作为 Codex 和 GitHub Copilot skills 的统一来源。

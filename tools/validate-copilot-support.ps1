@@ -9,6 +9,7 @@ $requiredFiles = @(
   ".github/skills/qishuyouyu-business-context/SKILL.md",
   ".github/skills/qsyy-kun/SKILL.md",
   ".github/skills/qsyy-kun/qsyyKunCreateWorkItems.md",
+  ".github/skills/qsyy-kun/qsyyKunCreateTaskItems.md",
   ".github/skills/qishuyouyu-pr/scripts/check-qishuyouyu-push.ps1",
   ".github/skills/qishuyouyu-pr/scripts/start-qishuyouyu-pr-branch.ps1",
   ".github/skills/qishuyouyu-pr/scripts/publish-qishuyouyu-draft-pr.ps1",
@@ -43,17 +44,24 @@ Assert-FileContains ".github/copilot-instructions.md" @("Copilot", "drama", "Kun
 Assert-FileContains ".github/skills/qishuyouyu-pr/SKILL.md" @("profile-name", "master", "draft", "scripts", "QISHUYOUYU_YICONG_GITHUB")
 Assert-FileContains ".github/skills/qishuyouyu-dev-standards/SKILL.md" @("try-catch", "E2E", "README", "AGENTS.md", "Playwright")
 Assert-FileContains ".github/skills/qishuyouyu-business-context/SKILL.md" @("drama-react", "drama-backend", "drama-processor", "Kun", "GitHub", "Jenkins")
-Assert-FileContains ".github/skills/qsyy-kun/SKILL.md" @("qsyy-kun", "qsyyKunCreateWorkItems.md", "Kun MCP")
+Assert-FileContains ".github/skills/qsyy-kun/SKILL.md" @("qsyy-kun", "qsyyKunCreateWorkItems.md", "qsyyKunCreateTaskItems.md", "Kun MCP")
 Assert-FileContains ".github/skills/qsyy-kun/qsyyKunCreateWorkItems.md" @("qsyyKunCreateWorkItems", "repository", "title", "content", "Kun MCP")
+Assert-FileContains ".github/skills/qsyy-kun/qsyyKunCreateTaskItems.md" @("qsyyKunCreateTaskItems", "repository", "title", "content", "Kun MCP")
 
 if (Test-Path -LiteralPath (Join-Path $root ".github/skills/qishuyouyu-kun-work-item/SKILL.md")) {
   throw "Old Copilot Kun skill still exists."
 }
 
-$kunSkillText = [System.IO.File]::ReadAllText((Join-Path $root ".github/skills/qsyy-kun/qsyyKunCreateWorkItems.md"), [System.Text.Encoding]::UTF8)
-foreach ($forbidden in @("backend-api", "appId", "component_id", "block_by_id", "plane_id", "TQ-Authorization")) {
-  if ($kunSkillText.Contains($forbidden)) {
-    throw "qsyyKunCreateWorkItems.md exposes forbidden backend detail: $forbidden"
+$kunSkillFiles = @(
+  ".github/skills/qsyy-kun/qsyyKunCreateWorkItems.md",
+  ".github/skills/qsyy-kun/qsyyKunCreateTaskItems.md"
+)
+foreach ($kunSkillFile in $kunSkillFiles) {
+  $kunSkillText = [System.IO.File]::ReadAllText((Join-Path $root $kunSkillFile), [System.Text.Encoding]::UTF8)
+  foreach ($forbidden in @("backend-api", "appId", "component_id", "block_by_id", "plane_id", "TQ-Authorization")) {
+    if ($kunSkillText.Contains($forbidden)) {
+      throw "$kunSkillFile exposes forbidden backend detail: $forbidden"
+    }
   }
 }
 
