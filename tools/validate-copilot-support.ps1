@@ -10,7 +10,8 @@ $requiredFiles = @(
   ".github/skills/qishuyouyu-kun-work-item/SKILL.md",
   ".github/skills/qishuyouyu-pr/scripts/check-qishuyouyu-push.ps1",
   ".github/skills/qishuyouyu-pr/scripts/start-qishuyouyu-pr-branch.ps1",
-  ".github/skills/qishuyouyu-pr/scripts/publish-qishuyouyu-draft-pr.ps1"
+  ".github/skills/qishuyouyu-pr/scripts/publish-qishuyouyu-draft-pr.ps1",
+  "docs/install-copilot.md"
 )
 
 foreach ($file in $requiredFiles) {

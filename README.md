@@ -1,66 +1,70 @@
-# 奇树有鱼 Codex Marketplace
+# 奇树有鱼 AI 开发规范与能力包中心
 
-这是奇树有鱼团队的 Codex 插件市场仓库，用于统一分发公司内部 Codex 插件。
+这是奇树有鱼研发部门统一使用的 AI 开发规范与能力包仓库。
 
-## 当前插件
+它不是单一工具的配置仓库，而是公司级 AI 开发上下文分发中心，当前支持：
 
-- `qishuyouyu-plugin`：奇树有鱼开发规范和 PR 管理插件。
+- Codex marketplace / plugin
+- GitHub Copilot repository instructions / skills
+
+暂不服务 Kun agent；Kun agent 的能力包和运行规范单独维护。
+
+## 当前能力包
+
+- `qishuyouyu-business-context`：公司业务上下文，覆盖 drama 应用、Kun 平台定位和组件关系。
+- `qishuyouyu-dev-standards`：通用开发规范，强调参考原项目结构、显式错误处理、日志和测试边界。
+- `qishuyouyu-pr`：PR 管理规范，覆盖 master 分支策略、profile-name 分支命名、draft PR 和评审邀请。
+- `qishuyouyu-kun-work-item`：Kun Work Item 查看、创建、修改能力，以及 personal agent token / auth MCP 调用流程。
 
 ## 仓库结构
 
 ```text
-qishuyouyu-plugin/
+qishuyouyu-codex-marketplace/
   .agents/
     plugins/
-      marketplace.json
+      marketplace.json              # Codex marketplace 入口
   plugins/
-    qishuyouyu-plugin/
+    qishuyouyu-plugin/              # Codex plugin
       .codex-plugin/
       skills/
       scripts/
+  .github/
+    copilot-instructions.md         # GitHub Copilot 仓库级长期指令
+    skills/                         # GitHub Copilot skills
+  docs/
+    install-codex.md
+    install-copilot.md
+    maintenance.md
+  tools/
+    validate-copilot-support.ps1
+  VERSION
+  CHANGELOG.md
 ```
 
-## 使用方式
+## 安装
 
-团队成员 clone 本仓库后，在 Codex 中通过 marketplace 文件加载：
+Codex 安装方式见 [docs/install-codex.md](docs/install-codex.md)。
 
-```text
-.agents/plugins/marketplace.json
-```
+GitHub Copilot 安装方式见 [docs/install-copilot.md](docs/install-copilot.md)。
 
-插件本体路径：
+## 维护规则
 
-```text
-plugins/qishuyouyu-plugin
-```
+- 新增公司规范时，同时更新 Codex skill 和对应 Copilot skill。
+- Codex skill 放到 `plugins/qishuyouyu-plugin/skills/<skill-name>/`。
+- Copilot skill 放到 `.github/skills/<skill-name>/`。
+- Codex marketplace 条目统一写到 `.agents/plugins/marketplace.json`。
+- 不把真实 token、内部密钥、私有接口凭据写入本仓库。
+- 公司规范优先写入对应 skill，不随意改业务仓库的 README 或 AGENTS.md。
+- 维护流程见 [docs/maintenance.md](docs/maintenance.md)。
 
-## GitHub Copilot 支持
-
-本仓库同时支持 GitHub Copilot：
-
-- `.github/copilot-instructions.md`：仓库级长期指令。
-- `.github/skills/qishuyouyu-pr/`：PR 管理 skill，包含固定化 PowerShell 脚本。
-- `.github/skills/qishuyouyu-dev-standards/`：开发规范 skill。
-
-可以用 GitHub CLI 预览或安装 skill：
-
-```powershell
-gh skill preview huangjin-bit/qishuyouyu-codex-marketplace qishuyouyu-pr
-gh skill install huangjin-bit/qishuyouyu-codex-marketplace qishuyouyu-pr
-gh skill install huangjin-bit/qishuyouyu-codex-marketplace qishuyouyu-dev-standards
-```
-
-同步后可运行检查：
+## 验证
 
 ```powershell
 .\tools\validate-copilot-support.ps1
 ```
 
-## 维护规则
+推送前还应确认：
 
-- 新增插件时放到 `plugins/<plugin-name>/`。
-- marketplace 条目统一写到 `.agents/plugins/marketplace.json`。
-- Copilot skill 统一写到 `.github/skills/<skill-name>/`。
-- 同一条公司规范变更时，同步更新 Codex skill 和对应 Copilot skill。
-- 插件内的公司规范优先写入对应 skill，不随意改业务仓库的 README 或 AGENTS.md。
-- 推送前使用插件内的 PR/push 规范脚本做检查。
+```powershell
+git status --short
+```
