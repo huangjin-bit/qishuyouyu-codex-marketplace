@@ -2,6 +2,13 @@
 
 本仓库同时分发 Codex marketplace 和 GitHub Copilot skills。Copilot 在处理奇树有鱼相关任务时，应优先遵守这里的长期规则。
 
+## 业务上下文
+
+- 公司主业务是漫剧 `drama` 应用，核心组件包括 `drama-react`、`drama-backend`、`drama-processor`。
+- 当前明确的 drama 前端仓库是 `https://github.com/openai36/drama-react.git`。
+- Kun 是公司内部 AI DevOps 自动化平台，负责应用、组件、Work Item、Agent 调度、Jenkins、构建发布和日志，不是 GitHub/GitLab 代码托管平台。
+- 所有代码统一放在 GitHub 上，统一用 Git 管理；Kun 接入 GitHub 仓库并调度流程。
+
 ## 代码工作方式
 
 - 开始改代码前，先参考原项目结构：找同类功能、同层目录、命名方式和已有边界。

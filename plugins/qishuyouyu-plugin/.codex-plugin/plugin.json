@@ -1,7 +1,7 @@
 {
   "name": "qishuyouyu-plugin",
   "version": "0.1.0",
-  "description": "Codex plugin for Qishu Youyu development standards and PR workflow.",
+  "description": "Codex plugin for Qishu Youyu business context, development standards, and PR workflow.",
   "author": {
     "name": "Qishu Youyu",
     "email": "dev@example.com",
@@ -12,14 +12,17 @@
   "license": "UNLICENSED",
   "keywords": [
     "qishuyouyu",
+    "drama",
+    "kun",
+    "ai-devops",
     "pr-workflow",
     "development-standards"
   ],
   "skills": "./skills/",
   "interface": {
     "displayName": "奇树有鱼开发规范",
-    "shortDescription": "PR 管理、分支策略和团队开发约定。",
-    "longDescription": "面向奇树有鱼团队的 Codex 插件，覆盖参考原项目结构的代码规范、从 master 拉取、按 GitHub Profile Name 创建功能分支、草稿 PR、指定评审人、固定化 PR 脚本和推送前禁止项检查。",
+    "shortDescription": "业务上下文、PR 管理、分支策略和团队开发约定。",
+    "longDescription": "面向奇树有鱼团队的 Codex 插件，覆盖 drama 漫剧业务、Kun 内部 AI DevOps 平台上下文、参考原项目结构的代码规范、从 master 拉取、按 GitHub Profile Name 创建功能分支、草稿 PR、指定评审人、固定化 PR 脚本和推送前禁止项检查。",
     "developerName": "Qishu Youyu",
     "category": "Productivity",
     "capabilities": [
@@ -32,7 +35,7 @@
     "termsOfServiceURL": "https://github.com/",
     "defaultPrompt": [
       "按奇树有鱼规范创建一个草稿 PR。",
-      "检查当前分支是否符合奇树有鱼 PR 规则。",
+      "解释 drama 应用和 Kun 平台的关系。",
       "按公司开发规范实现这个需求。"
     ],
     "brandColor": "#0F766E"
