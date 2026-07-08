@@ -8,6 +8,8 @@
 - 当前明确的 drama 前端仓库是 `https://github.com/openai36/drama-react.git`。
 - Kun 是公司内部 AI DevOps 自动化平台，负责应用、组件、Work Item、Agent 调度、Jenkins、构建发布和日志，不是 GitHub/GitLab 代码托管平台。
 - 所有代码统一放在 GitHub 上，统一用 Git 管理；Kun 接入 GitHub 仓库并调度流程。
+- 当前正在开放 Kun Work Item 能力：personal agent 通过 auth MCP 获取当前用户的个人 agent token，再携带该 token 调用 Kun 查看、创建、修改工作项。
+- token 由 auth MCP 统一处理注册/登录、生命周期和过期刷新；不要把 token 写入日志或持久化文档。
 
 ## 代码工作方式
 

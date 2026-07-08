@@ -15,6 +15,8 @@
     "drama",
     "kun",
     "ai-devops",
+    "work-item",
+    "auth-mcp",
     "pr-workflow",
     "development-standards"
   ],
@@ -22,7 +24,7 @@
   "interface": {
     "displayName": "奇树有鱼开发规范",
     "shortDescription": "业务上下文、PR 管理、分支策略和团队开发约定。",
-    "longDescription": "面向奇树有鱼团队的 Codex 插件，覆盖 drama 漫剧业务、Kun 内部 AI DevOps 平台上下文、参考原项目结构的代码规范、从 master 拉取、按 GitHub Profile Name 创建功能分支、草稿 PR、指定评审人、固定化 PR 脚本和推送前禁止项检查。",
+    "longDescription": "面向奇树有鱼团队的 Codex 插件，覆盖 drama 漫剧业务、Kun 内部 AI DevOps 平台上下文、Kun Work Item 查看/创建/修改与 auth MCP token 流程、参考原项目结构的代码规范、从 master 拉取、按 GitHub Profile Name 创建功能分支、草稿 PR、指定评审人、固定化 PR 脚本和推送前禁止项检查。",
     "developerName": "Qishu Youyu",
     "category": "Productivity",
     "capabilities": [
@@ -36,7 +38,7 @@
     "defaultPrompt": [
       "按奇树有鱼规范创建一个草稿 PR。",
       "解释 drama 应用和 Kun 平台的关系。",
-      "按公司开发规范实现这个需求。"
+      "设计 Kun 工作项的 token 调用流程。"
     ],
     "brandColor": "#0F766E"
   }
