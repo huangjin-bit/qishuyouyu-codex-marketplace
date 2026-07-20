@@ -13,7 +13,7 @@
 
 - `qishuyouyu-business-context`：公司业务上下文，覆盖 drama 应用、Kun 平台定位和组件关系。
 - `qishuyouyu-dev-standards`：通用开发规范，强调参考原项目结构、显式错误处理、日志和测试边界。
-- `qishuyouyu-pr`：PR 管理规范，覆盖 master 分支策略、profile-name 分支命名、draft PR 和评审邀请。
+- `qishuyouyu-pr`：标准提交流程，覆盖基于最新 master 创建 `feature/fix/chore` 分支、提交、push 和 draft PR。
 - `qsyy-kun`：Kun 平台扩展能力包，当前包含 `qsyyKunCreateWorkItems` 和 `qsyyKunCreateTaskItems`，通过 Kun MCP 创建工作项/任务项。
 
 ## 仓库结构

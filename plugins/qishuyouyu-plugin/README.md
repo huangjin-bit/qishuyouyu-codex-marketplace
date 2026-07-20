@@ -4,48 +4,48 @@
 
 ## 已包含的 skill
 
-- `qishuyouyu-pr`：PR 管理规范，强制从最新 `master` 创建分支，创建草稿 PR，并邀请易从评审。
+- `qishuyouyu-pr`：标准提交流程，基于最新 `master` 创建 `feature/fix/chore` 分支，提交、push 并创建草稿 PR。
 - `qishuyouyu-dev-standards`：通用开发规范，覆盖 TDD、错误处理、日志、注释、模块拆分和前端验证偏好。
 - `qishuyouyu-business-context`：业务上下文，覆盖 drama 应用、Kun 平台定位和组件关系。
 - `qsyy-kun`：Kun 平台扩展能力包，当前通过 Kun MCP 创建工作项/任务项。
 
 ## PR 快速使用
 
-先配置易从的 GitHub username：
+创建分支、提交并开草稿 PR：
 
 ```powershell
-$env:QISHUYOUYU_YICONG_GITHUB = "<yicong-github-username>"
+.\scripts\create-qishuyouyu-draft-pr.ps1 -Type feature -Slug "add-order-export" -CommitMessage "Add order export" -Title "Add order export"
 ```
 
-创建分支并开草稿 PR：
+也可以拆成两步：
 
 ```powershell
-.\scripts\create-qishuyouyu-draft-pr.ps1 -Feature "add-order-export" -Title "Add order export"
-```
-
-也可以直接传入评审人：
-
-```powershell
-.\scripts\create-qishuyouyu-draft-pr.ps1 -Feature "fix-login-timeout" -Reviewer "<yicong-github-username>"
+.\scripts\start-qishuyouyu-pr-branch.ps1 -Type fix -Slug "login-timeout"
+.\scripts\publish-qishuyouyu-draft-pr.ps1 -Title "Fix login timeout"
 ```
 
 ## PR 规则
 
 ```mermaid
 flowchart LR
-  A["检查工作区干净"] --> B["fetch origin master"]
-  B --> C["checkout master"]
-  C --> D["pull --ff-only origin master"]
-  D --> E["创建 <profile-name>/<PR功能> 分支"]
-  E --> F["push 分支"]
-  F --> G["gh pr create --draft"]
-  G --> H["邀请易从 review"]
+  A["检查当前工作区改动"] --> B["stash 保存当前改动"]
+  B --> C["fetch origin master"]
+  C --> D["checkout master"]
+  D --> E["pull --ff-only origin master"]
+  E --> F["创建 feature/fix/chore 分支"]
+  F --> G["恢复当前改动"]
+  G --> H["commit"]
+  H --> I["push 分支"]
+  I --> J["gh pr create --draft"]
 ```
 
 关键约束：
 
-- 只能从 `master` 创建功能分支。
-- 分支名格式是 `<profile-name>/<PR功能>`，`profile-name` 来自当前 GitHub Profile 显示名称，不使用 login/username。
+- 默认主分支是 `master`。
+- 分支名格式是 `feature/<slug>`、`fix/<slug>` 或 `chore/<slug>`。
+- 分支名使用英文、短横线，并能概括本次改动。
 - PR base 必须是 `master`。
 - PR 必须是 draft。
-- 必须邀请易从评审。
+- PR 描述必须包含 `Summary`。
+- 不要覆盖或丢弃用户未提交改动。
+- 不要 force push。

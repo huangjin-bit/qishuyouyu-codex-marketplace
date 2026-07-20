@@ -1,7 +1,7 @@
 param(
-  [string]$Reviewer = $env:QISHUYOUYU_YICONG_GITHUB,
-
   [string]$Title = "",
+
+  [string]$Body = "",
 
   [string]$BodyFile = "",
 
@@ -17,11 +17,8 @@ $ErrorActionPreference = "Stop"
 
 function Write-QyyLog {
   param(
-    [Parameter(Mandatory = $true)]
-    [string]$Level,
-
-    [Parameter(Mandatory = $true)]
-    [string]$Message
+    [Parameter(Mandatory = $true)][string]$Level,
+    [Parameter(Mandatory = $true)][string]$Message
   )
 
   $timestamp = Get-Date -Format "yyyy-MM-dd HH:mm:ss"
@@ -30,11 +27,8 @@ function Write-QyyLog {
 
 function Invoke-Checked {
   param(
-    [Parameter(Mandatory = $true)]
-    [string]$Command,
-
-    [Parameter(Mandatory = $true)]
-    [string[]]$Arguments
+    [Parameter(Mandatory = $true)][string]$Command,
+    [Parameter(Mandatory = $true)][string[]]$Arguments
   )
 
   Write-QyyLog "DEBUG" "$Command $($Arguments -join ' ')"
@@ -52,55 +46,38 @@ function Get-RequiredCommand {
   }
 }
 
-function ConvertTo-BranchPart {
+function ConvertFrom-Slug {
   param([Parameter(Mandatory = $true)][string]$Value)
 
-  $part = $Value.Trim()
-  $part = $part -replace '[~^:?*\[\]\\]+', '-'
-  $part = $part -replace '\s+', '-'
-  $part = $part -replace '-{2,}', '-'
-  $part = $part.Trim('-', '/')
-
-  if ([string]::IsNullOrWhiteSpace($part)) {
-    throw "Branch name part is empty after normalization: $Value"
+  $words = $Value -replace '-', ' '
+  if ([string]::IsNullOrWhiteSpace($words)) {
+    return "Update changes"
   }
 
-  return $part
+  return (Get-Culture).TextInfo.ToTitleCase($words)
 }
 
 try {
   Get-RequiredCommand "git"
   Get-RequiredCommand "gh"
 
-  if ([string]::IsNullOrWhiteSpace($Reviewer)) {
-    throw "Reviewer is required. Pass -Reviewer '<yicong-github-username>' or set QISHUYOUYU_YICONG_GITHUB."
-  }
-
   Invoke-Checked "git" @("rev-parse", "--is-inside-work-tree")
+  Invoke-Checked "git" @("remote", "get-url", "origin")
+  Invoke-Checked "gh" @("auth", "status")
 
   $branchName = git branch --show-current
   if ([string]::IsNullOrWhiteSpace($branchName)) {
     throw "Unable to resolve current branch."
   }
   if ($branchName -eq "master") {
-    throw "Do not publish a PR directly from master. Create a feature branch first."
+    throw "Do not publish a PR directly from master. Create a feature/fix/chore branch first."
   }
-  if ($branchName -notmatch '^[^/]+/.+') {
-    throw "Branch name must match '<profile-name>/<feature-slug>': $branchName"
-  }
-
-  $profileName = gh api user --jq ".name"
-  if ([string]::IsNullOrWhiteSpace($profileName)) {
-    throw "Unable to resolve current GitHub profile name via gh."
+  if ($branchName -notmatch '^(feature|fix|chore)/[a-z0-9][a-z0-9-]*$') {
+    throw "Branch name must match 'feature|fix|chore/<english-slug>': $branchName"
   }
 
-  $expectedPrefix = ConvertTo-BranchPart $profileName
-  if (-not $branchName.StartsWith("$expectedPrefix/")) {
-    throw "Branch '$branchName' must start with current profile-name '$expectedPrefix/'."
-  }
-
-  $dirty = git status --short
-  if ($dirty) {
+  $dirty = @(git status --porcelain=v1)
+  if ($dirty.Count -gt 0) {
     throw "Working tree is not clean. Commit or stash changes before publishing the draft PR."
   }
 
@@ -125,8 +102,9 @@ try {
     throw "Qishu Youyu push guard failed."
   }
 
+  $slugPart = ($branchName -replace '^(feature|fix|chore)/', '').Trim()
   if ([string]::IsNullOrWhiteSpace($Title)) {
-    $Title = ($branchName -replace '^[^/]+/', '').Trim()
+    $Title = ConvertFrom-Slug $slugPart
   }
 
   Write-QyyLog "INFO" "Pushing branch '$branchName'."
@@ -143,17 +121,31 @@ try {
     "--draft",
     "--base", "master",
     "--head", $branchName,
-    "--reviewer", $Reviewer,
     "--title", $Title
   )
 
+  $temporaryBodyFile = ""
   if (-not [string]::IsNullOrWhiteSpace($BodyFile)) {
     $prArgs += @("--body-file", $BodyFile)
+  } else {
+    if ([string]::IsNullOrWhiteSpace($Body)) {
+      $Body = "## Summary`n- $Title"
+    }
+    if ($Body -notmatch '(?m)^## Summary') {
+      $Body = "## Summary`n- $Body"
+    }
+    $temporaryBodyFile = Join-Path ([System.IO.Path]::GetTempPath()) "qishuyouyu-pr-body-$([System.Guid]::NewGuid()).md"
+    Set-Content -LiteralPath $temporaryBodyFile -Value $Body -Encoding UTF8
+    $prArgs += @("--body-file", $temporaryBodyFile)
   }
 
-  Write-QyyLog "INFO" "Creating draft PR targeting master and requesting review from '$Reviewer'."
+  Write-QyyLog "INFO" "Creating draft PR targeting master."
   Invoke-Checked "gh" $prArgs
   Write-QyyLog "INFO" "Draft PR created successfully."
+
+  if (-not [string]::IsNullOrWhiteSpace($temporaryBodyFile) -and (Test-Path -LiteralPath $temporaryBodyFile)) {
+    Remove-Item -LiteralPath $temporaryBodyFile -Force
+  }
 } catch {
   Write-QyyLog "ERROR" $_.Exception.Message
   if ($_.ScriptStackTrace) {

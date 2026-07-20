@@ -41,7 +41,7 @@ function Assert-FileContains {
 }
 
 Assert-FileContains ".github/copilot-instructions.md" @("Copilot", "drama", "Kun", "Work Item", "Kun MCP", "TDD", "draft", "AGENTS.md", "Codex marketplace", "shared/skills")
-Assert-FileContains ".github/skills/qishuyouyu-pr/SKILL.md" @("profile-name", "master", "draft", "scripts", "QISHUYOUYU_YICONG_GITHUB")
+Assert-FileContains ".github/skills/qishuyouyu-pr/SKILL.md" @("feature", "fix", "chore", "master", "draft", "Summary", "scripts")
 Assert-FileContains ".github/skills/qishuyouyu-dev-standards/SKILL.md" @("try-catch", "E2E", "README", "AGENTS.md", "Playwright")
 Assert-FileContains ".github/skills/qishuyouyu-business-context/SKILL.md" @("drama-react", "drama-backend", "drama-processor", "Kun", "GitHub", "Jenkins")
 Assert-FileContains ".github/skills/qsyy-kun/SKILL.md" @("qsyy-kun", "qsyyKunCreateWorkItems.md", "qsyyKunCreateTaskItems.md", "Kun MCP")

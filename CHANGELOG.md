@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.3.2 - 2026-07-20
+
+- 更新 `qishuyouyu-pr` 为标准提交流程：检查当前改动、基于最新 `master` 创建 `feature/fix/chore` 分支、提交、push 并创建 draft PR。
+- 改造 PR 脚本，支持安全携带当前未提交改动到新分支，不再强制 `profile-name` 分支前缀或评审人。
+
 ## 0.3.1 - 2026-07-08
 
 - 在 `qsyy-kun` 下新增 `qsyyKunCreateTaskItems`，支持“新建任务项”的用户表达。

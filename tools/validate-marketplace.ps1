@@ -80,6 +80,9 @@ Assert-Contains "CHANGELOG.md" @($version, "qsyy-kun", "Kun MCP")
 Assert-Contains "shared/skills/qsyy-kun/SKILL.md" @("qsyy-kun", "qsyyKunCreateWorkItems.md", "qsyyKunCreateTaskItems.md", "MCP")
 Assert-Contains "shared/skills/qsyy-kun/qsyyKunCreateWorkItems.md" @("qsyyKunCreateWorkItems", "repository", "title", "content", "Kun MCP")
 Assert-Contains "shared/skills/qsyy-kun/qsyyKunCreateTaskItems.md" @("qsyyKunCreateTaskItems", "repository", "title", "content", "Kun MCP")
+Assert-Contains "shared/skills/qishuyouyu-pr/SKILL.md" @("feature", "fix", "chore", "draft", "Summary", "git stash push")
+Assert-Contains "shared/skills/qishuyouyu-pr/scripts/create-qishuyouyu-draft-pr.ps1" @("ValidateSet", "feature", "fix", "chore", "stash push", "pr", "create", "--draft")
+Assert-Contains "shared/skills/qishuyouyu-pr/scripts/publish-qishuyouyu-draft-pr.ps1" @("feature|fix|chore", "--draft", "Summary")
 
 foreach ($removedPath in @(
   "plugins/qishuyouyu-plugin/skills/qishuyouyu-kun-work-item/SKILL.md",

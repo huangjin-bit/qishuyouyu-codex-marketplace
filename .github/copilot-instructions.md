@@ -28,8 +28,8 @@
 ## PR 和协作文档
 
 - PR 分支必须从最新 `master` 创建。
-- 分支名格式为 `<profile-name>/<feature-slug>`，`profile-name` 来自 GitHub Profile 显示名称。
-- PR base 必须是 `master`，PR 必须是 draft，并邀请易从评审。
+- 分支名格式为 `feature/<slug>`、`fix/<slug>` 或 `chore/<slug>`，使用英文和短横线。
+- PR base 必须是 `master`，PR 必须是 draft。
 - 推送前必须检查禁止项：`test/`、`tests/`、README 文件、`AGENTS.md`。
 - README、`AGENTS.md`、远程 agent 指令只有在用户明确要求时才能修改。
 
