@@ -1,8 +1,8 @@
-# 奇树有鱼 AI 开发规范与能力包中心
+# 奇树有鱼个人 AI 开发规范插件
 
-这是奇树有鱼研发部门统一使用的 AI 开发规范与能力包仓库。
+这是我个人使用的奇树有鱼 AI 开发规范、业务上下文和能力包仓库。
 
-它不是单一工具的配置仓库，而是公司级 AI 开发上下文分发中心，当前支持：
+它不是公司统一发布的公共插件，也不代表研发部门规范；当前仅用于我自己的 Codex / Copilot 工作流，支持：
 
 - Codex marketplace / plugin
 - GitHub Copilot repository instructions / skills
@@ -11,8 +11,8 @@
 
 ## 当前能力包
 
-- `qishuyouyu-business-context`：公司业务上下文，覆盖 drama 应用、Kun 平台定位和组件关系。
-- `qishuyouyu-dev-standards`：通用开发规范，强调参考原项目结构、显式错误处理、日志和测试边界。
+- `qishuyouyu-business-context`：我在奇树有鱼项目中的业务上下文，覆盖 drama 应用、Kun 平台定位和组件关系。
+- `qishuyouyu-dev-standards`：我的开发规范，强调参考原项目结构、显式错误处理、日志和测试边界。
 - `qishuyouyu-pr`：标准提交流程，覆盖基于最新 master 创建 `feature/fix/chore` 分支、提交、push 和 draft PR。
 - `qsyy-kun`：Kun 平台扩展能力包，当前包含 `qsyyKunCreateWorkItems` 和 `qsyyKunCreateTaskItems`，通过 Kun MCP 创建工作项/任务项。
 
@@ -31,7 +31,7 @@ qishuyouyu-codex-marketplace/
   shared/
     skills/                         # Codex 和 Copilot 的统一 skill 来源
   .github/
-    copilot-instructions.md         # GitHub Copilot 仓库级长期指令
+    copilot-instructions.md         # 个人 GitHub Copilot 仓库级长期指令
     skills/                         # GitHub Copilot skills
   docs/
     install-codex.md
@@ -51,13 +51,13 @@ GitHub Copilot 安装方式见 [docs/install-copilot.md](docs/install-copilot.md
 
 ## 维护规则
 
-- 新增公司规范时，优先更新 `shared/skills/<skill-name>/`。
+- 新增个人规范时，优先更新 `shared/skills/<skill-name>/`。
 - 使用 `tools/sync-shared-skills.ps1` 生成 Codex skill 和对应 Copilot skill。
 - Codex 生成结果位于 `plugins/qishuyouyu-plugin/skills/<skill-name>/`。
 - Copilot 生成结果位于 `.github/skills/<skill-name>/`。
-- Codex marketplace 条目统一写到 `.agents/plugins/marketplace.json`。
+- Codex marketplace 条目写到 `.agents/plugins/marketplace.json`。
 - 不把真实 token、内部密钥、私有接口凭据写入本仓库。
-- 公司规范优先写入对应 skill，不随意改业务仓库的 README 或 AGENTS.md。
+- 个人偏好优先写入对应 skill，不随意改业务仓库的 README 或 AGENTS.md。
 - 维护流程见 [docs/maintenance.md](docs/maintenance.md)。
 
 ## 验证

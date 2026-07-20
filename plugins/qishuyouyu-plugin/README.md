@@ -1,12 +1,12 @@
 # 奇树有鱼 Codex Plugin
 
-这是奇树有鱼公司的 Codex 插件，用于沉淀团队开发规范和 PR 工作流。
+这是我个人使用的奇树有鱼 Codex 插件，用于沉淀个人开发规范和 PR 工作流。
 
 ## 已包含的 skill
 
 - `qishuyouyu-pr`：标准提交流程，基于最新 `master` 创建 `feature/fix/chore` 分支，提交、push 并创建草稿 PR。
-- `qishuyouyu-dev-standards`：通用开发规范，覆盖 TDD、错误处理、日志、注释、模块拆分和前端验证偏好。
-- `qishuyouyu-business-context`：业务上下文，覆盖 drama 应用、Kun 平台定位和组件关系。
+- `qishuyouyu-dev-standards`：我的开发规范，覆盖 TDD、错误处理、日志、注释、模块拆分和前端验证偏好。
+- `qishuyouyu-business-context`：我在奇树有鱼项目中的业务上下文，覆盖 drama 应用、Kun 平台定位和组件关系。
 - `qsyy-kun`：Kun 平台扩展能力包，当前通过 Kun MCP 创建工作项/任务项。
 
 ## PR 快速使用

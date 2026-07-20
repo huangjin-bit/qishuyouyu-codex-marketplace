@@ -1,11 +1,11 @@
 ---
 name: qsyy-kun
-description: 奇树有鱼 Kun 平台扩展能力包。用户提到 Kun、坤平台、创建工作项、新建任务项、Work Item、工作项、任务项、qsyyKunCreateWorkItems、qsyyKunCreateTaskItems、Kun MCP 时使用。用于把请求路由到 Kun MCP 能力，并避免暴露后端接口、鉴权和内部字段。
+description: 我的奇树有鱼 Kun 平台扩展能力包。用户提到 Kun、坤平台、创建工作项、新建任务项、Work Item、工作项、任务项、qsyyKunCreateWorkItems、qsyyKunCreateTaskItems、Kun MCP 时使用。用于把请求路由到 Kun MCP 能力，并避免暴露后端接口、鉴权和内部字段。
 ---
 
-# Kun 平台扩展能力
+# 我的 Kun 平台扩展能力
 
-`qsyy-kun` 是奇树有鱼 Kun 平台扩展能力包。它只描述 AI Agent 应如何使用当前环境中的 Kun MCP 能力，不实现后端接口，也不暴露内部鉴权细节。
+`qsyy-kun` 是我个人使用的奇树有鱼 Kun 平台扩展能力包。它只描述 AI Agent 应如何使用当前环境中的 Kun MCP 能力，不实现后端接口，也不暴露内部鉴权细节。
 
 ## 能力索引
 

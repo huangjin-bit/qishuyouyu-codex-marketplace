@@ -1,7 +1,7 @@
 {
   "name": "qishuyouyu-codex-marketplace",
   "interface": {
-    "displayName": "奇树有鱼 Codex 插件市场"
+    "displayName": "奇树有鱼个人 Codex 插件"
   },
   "plugins": [
     {

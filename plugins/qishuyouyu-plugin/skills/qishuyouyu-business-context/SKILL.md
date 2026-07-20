@@ -1,13 +1,13 @@
 ---
 name: qishuyouyu-business-context
-description: 奇树有鱼公司业务上下文和通用语言。用户提到 drama、漫剧、Kun、AI DevOps、应用管理、组件管理、工作项、Agent 调度、Jenkins、构建发布、日志、drama-react、drama-backend、drama-processor 时使用。用于区分 drama 主业务应用和 Kun 内部 AI DevOps 平台。
+description: 我在奇树有鱼项目中的业务上下文和通用语言。用户提到 drama、漫剧、Kun、AI DevOps、应用管理、组件管理、工作项、Agent 调度、Jenkins、构建发布、日志、drama-react、drama-backend、drama-processor 时使用。用于区分 drama 主业务应用和 Kun 内部 AI DevOps 平台。
 ---
 
-# 奇树有鱼业务上下文
+# 我的奇树有鱼业务上下文
 
 ## 核心业务
 
-奇树有鱼公司的主业务是漫剧 `drama` 应用。
+我参与的奇树有鱼主业务是漫剧 `drama` 应用。
 
 ```text
 drama 应用

@@ -1,6 +1,6 @@
 # GitHub Copilot 安装说明
 
-本仓库通过 GitHub Copilot repository instructions 和 skills 分发公司规范。
+本仓库通过 GitHub Copilot repository instructions 和 skills 安装我个人使用的奇树有鱼规范。
 
 ## 仓库级指令
 

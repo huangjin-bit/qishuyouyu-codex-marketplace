@@ -1,10 +1,10 @@
 # 奇树有鱼 Copilot 指令
 
-本仓库同时分发 Codex marketplace 和 GitHub Copilot skills。Copilot 在处理奇树有鱼相关任务时，应优先遵守这里的长期规则。
+本仓库同时提供我个人使用的 Codex marketplace 和 GitHub Copilot skills。Copilot 在处理我的奇树有鱼相关任务时，应优先遵守这里的个人长期规则。
 
 ## 业务上下文
 
-- 公司主业务是漫剧 `drama` 应用，核心组件包括 `drama-react`、`drama-backend`、`drama-processor`。
+- 我参与的奇树有鱼主业务是漫剧 `drama` 应用，核心组件包括 `drama-react`、`drama-backend`、`drama-processor`。
 - 当前明确的 drama 前端仓库是 `https://github.com/openai36/drama-react.git`。
 - Kun 是公司内部 AI DevOps 自动化平台，负责应用、组件、Work Item、Agent 调度、Jenkins、构建发布和日志，不是 GitHub/GitLab 代码托管平台。
 - 所有代码统一放在 GitHub 上，统一用 Git 管理；Kun 接入 GitHub 仓库并调度流程。
@@ -38,4 +38,4 @@
 - Codex marketplace 入口是 `.agents/plugins/marketplace.json`。
 - Codex 插件本体在 `plugins/qishuyouyu-plugin/`。
 - Copilot skills 在 `.github/skills/`。
-- 同一条公司规范变更时，应先更新 `shared/skills/`，再运行 `tools/sync-shared-skills.ps1` 生成 Codex 和 Copilot 两套 skill。
+- 同一条个人规范变更时，应先更新 `shared/skills/`，再运行 `tools/sync-shared-skills.ps1` 生成 Codex 和 Copilot 两套 skill。

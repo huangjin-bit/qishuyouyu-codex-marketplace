@@ -1,6 +1,6 @@
 # Codex 安装说明
 
-本仓库通过 Codex marketplace 分发 `qishuyouyu-plugin`。
+本仓库通过 Codex marketplace 安装我个人使用的 `qishuyouyu-plugin`。
 
 ## 安装 marketplace
 
@@ -38,7 +38,7 @@ git pull --ff-only
 
 ## 当前插件内容
 
-- 业务上下文：drama、Kun、组件关系。
-- 开发规范：参考原项目结构、显式错误处理、日志、测试边界。
+- 个人业务上下文：drama、Kun、组件关系。
+- 个人开发规范：参考原项目结构、显式错误处理、日志、测试边界。
 - PR 规范：基于最新 master 创建 `feature/fix/chore` 分支、提交、push 和 draft PR。
 - Kun 平台扩展能力：`qsyy-kun`，当前通过 Kun MCP 创建工作项/任务项。

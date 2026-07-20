@@ -67,6 +67,7 @@ if ($version -notmatch '^\d+\.\d+\.\d+$') {
 }
 
 Assert-Contains "README.md" @("Codex marketplace", "GitHub Copilot", "Kun agent", "qsyy-kun")
+Assert-Contains "plugins/qishuyouyu-plugin/.codex-plugin/plugin.json" @("Personal Codex plugin")
 Assert-Contains "docs/install-codex.md" @("codex plugin marketplace add", "qishuyouyu-plugin")
 Assert-Contains "docs/install-copilot.md" @("gh skill install", "qsyy-kun")
 Assert-Contains "docs/maintenance.md" @("plugins/qishuyouyu-plugin/skills", ".github/skills", "GitHub Copilot", "VERSION")
@@ -83,6 +84,9 @@ Assert-Contains "shared/skills/qsyy-kun/qsyyKunCreateTaskItems.md" @("qsyyKunCre
 Assert-Contains "shared/skills/qishuyouyu-pr/SKILL.md" @("feature", "fix", "chore", "draft", "Summary", "git stash push")
 Assert-Contains "shared/skills/qishuyouyu-pr/scripts/create-qishuyouyu-draft-pr.ps1" @("ValidateSet", "feature", "fix", "chore", "stash push", "pr", "create", "--draft")
 Assert-Contains "shared/skills/qishuyouyu-pr/scripts/publish-qishuyouyu-draft-pr.ps1" @("feature|fix|chore", "--draft", "Summary")
+Assert-Contains "shared/skills/qishuyouyu-business-context/SKILL.md" @("qishuyouyu-business-context", "drama-react")
+Assert-Contains "shared/skills/qishuyouyu-dev-standards/SKILL.md" @("qishuyouyu-dev-standards", "TDD")
+Assert-Contains "shared/skills/qsyy-kun/SKILL.md" @("qsyy-kun", "Kun MCP")
 
 foreach ($removedPath in @(
   "plugins/qishuyouyu-plugin/skills/qishuyouyu-kun-work-item/SKILL.md",

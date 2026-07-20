@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.4.0 - 2026-07-20
+
+- 将仓库定位从公司/研发部门统一使用的能力包中心调整为个人使用的奇树有鱼 Codex/Copilot 插件。
+- 更新 README、安装说明、维护说明、Copilot 指令和插件元数据，避免对外宣称公司统一规范或公共分发。
+
 ## 0.3.2 - 2026-07-20
 
 - 更新 `qishuyouyu-pr` 为标准提交流程：检查当前改动、基于最新 `master` 创建 `feature/fix/chore` 分支、提交、push 并创建 draft PR。

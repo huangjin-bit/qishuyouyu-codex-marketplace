@@ -1,9 +1,9 @@
 ---
 name: qishuyouyu-pr
-description: 奇树有鱼标准提交流程和 PR 管理规范。用户提到提交改动、标准提交、创建分支、commit、push、draft PR、开 PR、提交评审、合并前检查或从 master 拉分支时必须使用。要求先理解当前工作区改动，基于最新 master 创建 feature/fix/chore 分支，安全带上当前改动，提交、push 并创建 draft PR。
+description: 我的奇树有鱼标准提交流程和 PR 管理规范。用户提到提交改动、标准提交、创建分支、commit、push、draft PR、开 PR、提交评审、合并前检查或从 master 拉分支时必须使用。要求先理解当前工作区改动，基于最新 master 创建 feature/fix/chore 分支，安全带上当前改动，提交、push 并创建 draft PR。
 ---
 
-# 奇树有鱼标准提交流程
+# 我的奇树有鱼标准提交流程
 
 ## 触发场景
 
